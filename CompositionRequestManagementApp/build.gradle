@@ -11,6 +11,12 @@ application {
     mainClass = 'koto-thing.Main'
 }
 
+tasks.withType(JavaCompile)
+        .configureEach {
+    // Javaのソースコードの文字エンコーディングをUTF-8に設定
+    options.encoding = 'UTF-8'
+}
+
 // 依存関係ライブラリのダウンロード元リポジトリを指定
 repositories {
     mavenCentral()
@@ -29,6 +35,9 @@ dependencies {
 
     // GSON - JSONデータを扱いやすくするためのライブラリ
     implementation 'com.google.code.gson:gson:2.10.1'
+    
+    // FlatLaf - モダンな外観のGUIを作成するためのライブラリ
+    implementation 'com.formdev:flatlaf:3.6.2'
 
     // テスト用のライブラリ (初期設定)
     testImplementation platform('org.junit:junit-bom:5.9.1')
